@@ -2,10 +2,8 @@ package com.exercise.customer.service;
 
 import com.exercise.customer.entity.Customer;
 import com.exercise.customer.repository.CustomerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
