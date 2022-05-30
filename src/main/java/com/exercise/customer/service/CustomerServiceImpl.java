@@ -5,6 +5,7 @@ import com.exercise.customer.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,8 +14,11 @@ import java.util.Optional;
 
 public class CustomerServiceImpl implements CustomerService{
 
-    @Autowired
-    private CustomerRepository repository;
+    private final CustomerRepository repository;
+
+    public CustomerServiceImpl(CustomerRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public List<Customer> findAllCustomer() {
@@ -48,6 +52,21 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
+    public Long findIdByCode(String code) {
+        Iterable<Customer> result = repository.findAll();
+        for(Customer c : result){
+            System.out.println(c);
+            if (c.getCode()!= null) {
+                if (c.getCode().equals(code)) {
+                    return c.getId();
+                }
+            }
+        }
+        return null;
+    }
+
+
+    @Override
     public Customer update(Customer customer, Long orderId) {
 
         Customer cusDB = repository.findById(orderId).get();
@@ -66,6 +85,10 @@ public class CustomerServiceImpl implements CustomerService{
 
         if (Objects.nonNull(customer.getEmail()) && !"".equalsIgnoreCase(customer.getEmail())){
             cusDB.setEmail(customer.getEmail());
+        }
+
+        if (Objects.nonNull(customer.getCode()) && !"".equalsIgnoreCase(customer.getCode())){
+            cusDB.setCode(customer.getCode());
         }
         return repository.save(cusDB);
     }

@@ -27,6 +27,11 @@ public class CustomerController {
         return customerService.findById(id);
     }
 
+    @GetMapping("/request/{code}")
+    public Long getCode(@PathVariable String code) {
+        return customerService.findIdByCode(code);
+    }
+
     @PostMapping("")
     public String insert(@Valid @RequestBody Customer customer) {
 
@@ -53,7 +58,7 @@ public class CustomerController {
     }
 
     @PutMapping("{id}")
-    public String updateOrder(@RequestBody Customer customer, @PathVariable("id") Long customerId) {
+    public String updateCustomer(@RequestBody Customer customer, @PathVariable("id") Long customerId) {
         if(customer != null) {
             customerService.update(customer, customerId);
             return "Updated customer.";

@@ -32,8 +32,23 @@ public class Customer {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "code")
+    private String code;
+
     @OneToMany
     @JoinColumn(name = "id_customer")
     private Set<Order> orders;
 
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", code='" + code + '\'' +
+                ", orders=" + orders +
+                '}';
+    }
 }
