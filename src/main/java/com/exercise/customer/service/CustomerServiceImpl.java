@@ -55,7 +55,6 @@ public class CustomerServiceImpl implements CustomerService{
     public Long findIdByCode(String code) {
         Iterable<Customer> result = repository.findAll();
         for(Customer c : result){
-            System.out.println(c);
             if (c.getCode()!= null) {
                 if (c.getCode().equals(code)) {
                     return c.getId();
