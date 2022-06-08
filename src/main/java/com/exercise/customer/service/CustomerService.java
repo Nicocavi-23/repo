@@ -7,6 +7,7 @@ import java.util.List;
 public interface CustomerService {
     List<Customer> findAllCustomer();
     Customer findById(Long id);
+    String findByIdString(Long id);
     Long findIdByCode(String code);
     Customer insert(Customer customer);
     boolean delete(Long id);

@@ -27,6 +27,11 @@ public class CustomerController {
         return customerService.findById(id);
     }
 
+    @GetMapping("/orders/{id}")
+    public String getOrderInAuth(@PathVariable Long id) {
+        return customerService.findByIdString(id);
+    }
+
     @GetMapping("/request/{code}")
     public Long getCode(@PathVariable String code) {
         return customerService.findIdByCode(code);

@@ -31,4 +31,13 @@ public class Order {
     @JoinColumn(name = "id_order")
     private Set<Article> articles;
 
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", address='" + address + '\'' +
+                ", id_customer=" + id_customer +
+                ", articles=" + articles +
+                '}';
+    }
 }

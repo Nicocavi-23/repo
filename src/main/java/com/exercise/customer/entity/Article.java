@@ -28,4 +28,13 @@ public class Article {
     @Column(name = "id_order")
     private Long id_order;
 
+    @Override
+    public String toString() {
+        return "Article{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", id_order=" + id_order +
+                '}';
+    }
 }
