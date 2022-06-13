@@ -50,16 +50,6 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
-    public String findByIdString(Long id) {
-        Optional<Customer> result = repository.findById(id);
-        if (result.isPresent()) {
-            return result.get().toString();
-        } else {
-            return null;
-        }
-    }
-
-    @Override
     public Long findIdByCode(String code) {
         Iterable<Customer> result = repository.findAll();
         for(Customer c : result){
